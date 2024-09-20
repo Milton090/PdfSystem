@@ -1,0 +1,31 @@
+<mat-sidenav-container class="sidenav-container">
+   <!-- Sidenav -->
+   <mat-sidenav #drawer class="sidenav" fixedInViewport>
+      <mat-toolbar id="header">
+         <h1>Menú</h1>
+      </mat-toolbar>
+      <mat-nav-list>
+         @for(module of modules; track $index){
+
+            <ng-container>
+               <a mat-list-item [routerLink]="module.route">
+                  {{ module.name }}
+               </a>
+            </ng-container>
+         }
+      </mat-nav-list>
+   </mat-sidenav>
+
+   <!-- Main Content -->
+   <mat-sidenav-content>
+      <mat-toolbar class="custom-toolbar">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span routerLink="/home">Sistema</span>
+        <span class="spacer"></span>
+        <button (click)="logout()" class="btn btn-danger">Cerrar sesión</button>
+      </mat-toolbar>
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

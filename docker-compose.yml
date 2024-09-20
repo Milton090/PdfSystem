@@ -1,0 +1,38 @@
+services:
+  server:
+    build: ./backend
+    restart: always
+    ports:
+      - "${SERVER_PORT:-5000}:${SERVER_PORT:-5000}"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=${DB_PORT:-1433}
+      - DB_NAME=documents
+      - DB_USER=sa
+      - SA_PASSWORD=${SA_PASSWORD:-yourStrongPassw0rd123!}
+      - SERVER_PORT=${SERVER_PORT-5000}
+      - JWT_SECRET=${JWT_SECRET:-yourV3ryStr0ngJWT_S3cr3tK3yW1th32Chars!}
+      - ASPNETCORE_URLS=http://+:${SERVER_PORT:-5000}
+      - CERTIFICATE_PATH=/app/Certificate/certificate.pfx
+
+  client:
+    build: ./frontend
+    restart: always
+    ports:
+      - "${CLIENT_PORT:-4200}:80"
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-CU14-ubuntu-22.04
+    restart: always
+    environment:
+      SA_PASSWORD: "${SA_PASSWORD:-yourStrongPassw0rd123!}"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "${DB_PORT:-1433}:${DB_PORT:-1433}"
+    volumes:
+      - db-data:/var/opt/mssql
+
+volumes:
+  db-data:

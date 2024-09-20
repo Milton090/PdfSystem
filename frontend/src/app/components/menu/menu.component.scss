@@ -1,0 +1,38 @@
+.sidenav-container {
+   height: 100%;
+   overflow: hidden;
+}
+
+.sidenav {
+   width: 200px;
+   position: fixed;
+   display: flex;
+   flex-direction: column;
+}
+
+.custom-toolbar {
+   background-color: #1A237E;
+   color: white;
+   position: sticky;
+   top: 0;
+   z-index: 1;
+   display: flex;
+   align-items: center;
+}
+
+.btn {
+   padding: 10px 20px;
+   border: none;
+   cursor: pointer;
+   text-align: center;
+   color: white;
+}
+
+.btn-danger {
+   background-color: red;
+   border-radius: 4px;
+}
+
+.spacer {
+   flex: 1;
+}

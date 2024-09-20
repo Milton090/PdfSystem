@@ -1,0 +1,15 @@
+<div class="container">
+   <div class="modal-header">
+      <button type="button" class="btn btn-danger" (click)="closeModal()">×</button>
+   </div>
+   <div class="pdf-container">
+      <ngx-extended-pdf-viewer [src]="pdfUrl"></ngx-extended-pdf-viewer>
+   </div>
+   <div class="signature-container">
+      <canvas #signatureCanvas class="signature-canvas"></canvas>
+   </div>
+   <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="saveSignature()">Firmar</button>
+      <button type="button" class="btn btn-secondary" (click)="clearSignature()">Limpiar</button>
+   </div>
+</div>
