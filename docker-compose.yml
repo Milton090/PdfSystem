@@ -21,7 +21,7 @@ services:
     build: ./frontend
     restart: always
     ports:
-      - "${CLIENT_PORT:-4200}:80"
+      - "${CLIENT_PORT:-7000}:80"
 
   db:
     image: mcr.microsoft.com/mssql/server:2022-CU14-ubuntu-22.04
